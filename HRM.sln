@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{431C9A21-777C-4348-BF73-03C8B1D6A516}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interviews", "Interviews", "{EE25B03D-7470-4065-BC09-FE089648F47D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OnBoarding", "OnBoarding", "{F7FB8F4D-2B6C-4EF1-827D-5A8A44C07659}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Recruiting", "Recruiting", "{7837CADD-3558-45FD-9972-A5E37C8DB341}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitingWeb", "Services\Recruiting\RecruitingWeb\RecruitingWeb.csproj", "{9753BB06-225A-4E86-8147-9E046222B874}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationCore", "Services\Recruiting\ApplicationCore\ApplicationCore.csproj", "{C57EAE47-E20E-41AA-BB83-448AC08E2AF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Services\Recruiting\Infrastructure\Infrastructure.csproj", "{0026EEC9-5215-40B4-BBC5-E5C882EFC13C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9753BB06-225A-4E86-8147-9E046222B874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9753BB06-225A-4E86-8147-9E046222B874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9753BB06-225A-4E86-8147-9E046222B874}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9753BB06-225A-4E86-8147-9E046222B874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57EAE47-E20E-41AA-BB83-448AC08E2AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57EAE47-E20E-41AA-BB83-448AC08E2AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57EAE47-E20E-41AA-BB83-448AC08E2AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57EAE47-E20E-41AA-BB83-448AC08E2AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0026EEC9-5215-40B4-BBC5-E5C882EFC13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0026EEC9-5215-40B4-BBC5-E5C882EFC13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0026EEC9-5215-40B4-BBC5-E5C882EFC13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0026EEC9-5215-40B4-BBC5-E5C882EFC13C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {721D3433-773C-42F2-B60F-30E48A2CD7EE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9753BB06-225A-4E86-8147-9E046222B874} = {7837CADD-3558-45FD-9972-A5E37C8DB341}
+		{C57EAE47-E20E-41AA-BB83-448AC08E2AF9} = {7837CADD-3558-45FD-9972-A5E37C8DB341}
+		{0026EEC9-5215-40B4-BBC5-E5C882EFC13C} = {7837CADD-3558-45FD-9972-A5E37C8DB341}
+	EndGlobalSection
+EndGlobal

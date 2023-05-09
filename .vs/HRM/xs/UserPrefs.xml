@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{9753BB06-225A-4E86-8147-9E046222B874}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/Recruiting/RecruitingWeb/Controllers/HomeController.cs">
+    <Files>
+      <File FileName="Services/Recruiting/RecruitingWeb/Program.cs" />
+      <File FileName="Services/Recruiting/RecruitingWeb/Views/Home/Index.cshtml" />
+      <File FileName="Services/Recruiting/RecruitingWeb/Controllers/HomeController.cs" Line="31" Column="23" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HRM" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Recruiting.RecruitingWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

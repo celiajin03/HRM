@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Entities\" />
+    <None Remove="Models\" />
+    <None Remove="Contracts\" />
+    <None Remove="Excetpions\" />
+    <None Remove="Contracts\Repositories\" />
+    <None Remove="Contracts\Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Models\" />
+    <Folder Include="Contracts\" />
+    <Folder Include="Excetpions\" />
+    <Folder Include="Contracts\Repositories\" />
+    <Folder Include="Contracts\Services\" />
+  </ItemGroup>
+</Project>
