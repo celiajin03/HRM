@@ -1,26 +1,49 @@
 ﻿<Properties StartupConfiguration="{9753BB06-225A-4E86-8147-9E046222B874}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Services/Recruiting/RecruitingWeb/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/RecruitingWeb/Controllers/JobsController.cs" relfile="Services/Recruiting/RecruitingWeb/Controllers/JobsController.cs" line="21" column="9" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/Recruiting/Infrastructure/Services/JobService.cs">
     <Files>
+      <File FileName="Services/Recruiting/Infrastructure/Services/JobService.cs" Line="16" Column="91" />
+      <File FileName="Services/Recruiting/ApplicationCore/Contracts/Services/IJobService.cs" />
+      <File FileName="Services/Recruiting/RecruitingWeb/Controllers/JobsController.cs" />
       <File FileName="Services/Recruiting/RecruitingWeb/Program.cs" />
-      <File FileName="Services/Recruiting/RecruitingWeb/Views/Home/Index.cshtml" />
-      <File FileName="Services/Recruiting/RecruitingWeb/Controllers/HomeController.cs" Line="31" Column="23" />
+      <File FileName="Services/Recruiting/Infrastructure/Services/JobsMongoDbService.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="HRM" expanded="True" />
+          <Node name="HRM" expanded="True">
+            <Node name="Recruiting" expanded="True">
+              <Node name="ApplicationCore" expanded="True">
+                <Node name="Contracts" expanded="True">
+                  <Node name="Services" expanded="True" />
+                </Node>
+                <Node name="Models" expanded="True" />
+              </Node>
+              <Node name="Infrastructure" expanded="True">
+                <Node name="Repositories" expanded="True" />
+                <Node name="Services" expanded="True">
+                  <Node name="JobService.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="RecruitingWeb" expanded="True">
+                <Node name="Dependencies" expanded="True" />
+                <Node name="Controllers" expanded="True" />
+                <Node name="Views" expanded="True">
+                  <Node name="Home" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Recruiting.RecruitingWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
 </Properties>

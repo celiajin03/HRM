@@ -10,3 +10,6 @@
 /Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Infrastructure/obj/Debug/net6.0/refint/Infrastructure.dll
 /Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Infrastructure/obj/Debug/net6.0/Infrastructure.pdb
 /Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Infrastructure/obj/Debug/net6.0/ref/Infrastructure.dll
+/Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Infrastructure/bin/Debug/net6.0/ApplicationCore.dll
+/Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Infrastructure/bin/Debug/net6.0/ApplicationCore.pdb
+/Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Infrastructure/obj/Debug/net6.0/Infrastructure.csproj.CopyComplete

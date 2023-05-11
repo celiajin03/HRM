@@ -15,11 +15,13 @@
     <None Remove="Contracts\Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Models\" />
     <Folder Include="Contracts\" />
     <Folder Include="Excetpions\" />
     <Folder Include="Contracts\Repositories\" />
     <Folder Include="Contracts\Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.3.23174.2" />
   </ItemGroup>
 </Project>
