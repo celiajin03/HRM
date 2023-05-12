@@ -22,4 +22,7 @@
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Jobs\" />
+  </ItemGroup>
 </Project>

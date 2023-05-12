@@ -1,11 +1,9 @@
 ﻿using System;
 namespace ApplicationCore.Contracts.Repositories
 {
-	public class ICandidateRepository
+	public interface  ICandidateRepository
 	{
-		public ICandidateRepository()
-		{
-		}
+		
 	}
 }
 

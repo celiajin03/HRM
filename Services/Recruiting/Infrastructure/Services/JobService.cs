@@ -1,4 +1,5 @@
 ﻿using System;
+using ApplicationCore.Contracts.Repositories;
 using ApplicationCore.Contracts.Services;
 using ApplicationCore.Models;
 
@@ -6,12 +7,16 @@ namespace Infrastructure.Services
 {
     public class JobService : IJobService
 	{
-		public JobService()
-		{
-		}
+        private readonly IJobRepository _jobRepository;
 
-        public List<JobResponseModel> GetAllJobs()
+        public JobService(IJobRepository jobRepository)
         {
+            _jobRepository = jobRepository;
+        }
+
+        public async Task< List<JobResponseModel>> GetAllJobs()
+        {
+            /*
             //have some fummy data
             var jobs = new List<JobResponseModel>()
             {
@@ -22,11 +27,36 @@ namespace Infrastructure.Services
 
             };
             return jobs;
+            */
+            var jobs = await _jobRepository.GetAllJobs();
+            
+            var jobResponseModel = new List<JobResponseModel>();
+            foreach (var job in jobs)
+            {
+                jobResponseModel.Add(new JobResponseModel
+                {
+                    Id = job.Id, Description = job.Description, Title = job.Title, StartDate = job.StartDate.GetValueOrDefault(), NumberOfPositions = job.NumberOfPositions
+                });
+            }
+            return jobResponseModel;
+            
+            /*
+             // LINQ
+            return jobs.Select(job => new JobResponseModel
+                { Id = job.Id, Description = job.Description, Title = job.Title }).ToList();
+            */
         }
 
-        public JobResponseModel GetJobById(int id)
+        public async Task<JobResponseModel> GetJobById(int id)
         {
-            return  new JobResponseModel { Id = 4, Title = "JavaScript Developer", Description = "Need to be good with JavaScript" };
+            // return  new JobResponseModel { Id = 4, Title = "JavaScript Developer", Description = "Need to be good with JavaScript" };
+            var job = await _jobRepository.GetJobById(id);
+            var jobResponseModel = new JobResponseModel
+            {
+                Id = job.Id, Title = job.Title, StartDate = job.StartDate.GetValueOrDefault(),
+                Description = job.Description
+            };
+            return jobResponseModel;
         }
     }
 }

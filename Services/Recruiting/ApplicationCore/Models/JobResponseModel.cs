@@ -7,10 +7,8 @@ namespace ApplicationCore.Models
 		public string Title { get; set; }
 		public string Description { get; set; }
 
-
-        public JobResponseModel()
-		{
-		}
+		public DateTime StartDate { get; set; }
+		public int NumberOfPositions { get; set; }
 	}
 }
 
