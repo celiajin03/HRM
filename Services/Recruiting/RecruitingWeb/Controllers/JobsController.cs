@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApplicationCore.Contracts.Services;
+using ApplicationCore.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
+using RecruitingWeb.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -63,9 +65,27 @@ namespace RecruitingWeb.Controllers
             return View(jobs);
         }
 
+        //show the empty page
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
+        }
+
+        // saving the Job Information
+        [HttpPost]
+        // public async Task<IActionResult> Create(JobRequestModel model, string Location, string LOCATION, string loc)
+        public async Task<IActionResult> Create(JobRequestModel model)
+        {
+            // check if the model is valid, on the server side
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            // save the data in database
+            // return to the index view
+            await _jobService.AddJob(model);
+            return RedirectToAction("Index"); 
         }
     }
 }

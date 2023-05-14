@@ -7,8 +7,10 @@ namespace ApplicationCore.Contracts.Services
 	{
 		// List<JobResponseModel> GetAllJobs();
 		Task<List<JobResponseModel>> GetAllJobs();
-
+		
 		Task<JobResponseModel> GetJobById(int id);
+
+		Task<int> AddJob(JobRequestModel model);
 	}
 }
 

@@ -3,7 +3,7 @@ using ApplicationCore.Entities;
 
 namespace ApplicationCore.Contracts.Repositories
 {
-	public interface  IJobRepository
+	public interface  IJobRepository:IBaseRepository<Job>
 	{
 		// List<Job> GetAllJobs();
 		Task<List<Job>> GetAllJobs();
