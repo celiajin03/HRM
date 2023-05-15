@@ -52,6 +52,10 @@ namespace Infrastructure.Services
         {
             // return  new JobResponseModel { Id = 4, Title = "JavaScript Developer", Description = "Need to be good with JavaScript" };
             var job = await _jobRepository.GetJobById(id);
+            if (job == null)
+            {
+                return null;
+            }
             var jobResponseModel = new JobResponseModel
             {
                 Id = job.Id, Title = job.Title, StartDate = job.StartDate.GetValueOrDefault(),
