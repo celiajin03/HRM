@@ -17,7 +17,7 @@ public class JobRequestModel
     [Required(ErrorMessage = "Please enter Job Start Date")]
     // start date cannot be in the past 
     [DataType(DataType.Date)]
-    public DateTime StartDate { get; set; }
+    public DateTime? StartDate { get; set; }
     
     [Required(ErrorMessage = "please enter number")]
     public int NumberOfPositions { get; set; }

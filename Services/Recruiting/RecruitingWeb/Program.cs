@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IJobService , JobService>();
 builder.Services.AddScoped<IJobRepository, JobRepository>();
+builder.Services.AddScoped<ICandidateService , CandidateService>();
+builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
 
 // Inject our connectionString into DbContext
 builder.Services.AddDbContext<RecruitingDbContext>(

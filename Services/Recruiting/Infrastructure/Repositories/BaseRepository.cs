@@ -48,11 +48,20 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
 
     public async Task<T> UpdateAsync(T entity)
     {
-        throw new NotImplementedException();
+        _dbContext.Set<T>().Update(entity);
+        await _dbContext.SaveChangesAsync();
+        return entity;
     }
 
     public async Task<int> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var entity = await _dbContext.Set<T>().FindAsync(id);
+        if (entity==null)
+        {
+            throw new InvalidOperationException("The entity with the specified ID was not found.");
+        }
+        _dbContext.Set<T>().Remove(entity);
+        await _dbContext.SaveChangesAsync();
+        return id;
     }
 }

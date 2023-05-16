@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 using RecruitingWeb.Models;
 
@@ -8,16 +9,19 @@ namespace RecruitingWeb.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IJobService _jobService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IJobService jobService)
     {
         _logger = logger;
+        _jobService = jobService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
-        //return View("test");
+        // return View("test");
+        var jobs = await _jobService.GetAllJobs();
+        return View(jobs);
     }
 
     public IActionResult Privacy()

@@ -36,7 +36,14 @@ namespace Infrastructure.Services
             {
                 jobResponseModel.Add(new JobResponseModel
                 {
-                    Id = job.Id, Description = job.Description, Title = job.Title, StartDate = job.StartDate.GetValueOrDefault(), NumberOfPositions = job.NumberOfPositions
+                    Id = job.Id, 
+                    Description = job.Description, 
+                    Title = job.Title, 
+                    StartDate = job.StartDate.GetValueOrDefault(), 
+                    NumberOfPositions = job.NumberOfPositions, 
+                    JobCode = job.JobCode,
+                    IsActive = job.IsActive,
+                    CreatedOn = job.CreatedOn
                 });
             }
             return jobResponseModel;
@@ -58,8 +65,15 @@ namespace Infrastructure.Services
             }
             var jobResponseModel = new JobResponseModel
             {
-                Id = job.Id, Title = job.Title, StartDate = job.StartDate.GetValueOrDefault(),
-                Description = job.Description
+                Id = job.Id, 
+                Title = job.Title, 
+                StartDate = job.StartDate.GetValueOrDefault(),
+                Description = job.Description,
+                NumberOfPositions = job.NumberOfPositions,
+                JobCode = job.JobCode, 
+                IsActive = job.IsActive,
+                CreatedOn = job.CreatedOn
+                
             };
             return jobResponseModel;
         }
@@ -69,8 +83,13 @@ namespace Infrastructure.Services
             // call the repository that will use EF Core to save the data
             var jobEntity = new Job
             {
-                Title = model.Title, StartDate = model.StartDate, Description = model.Description,
-                CreatedOn = DateTime.UtcNow, NumberOfPositions = model.NumberOfPositions, JobStatusLookUpId = 1
+                Title = model.Title, 
+                StartDate = model.StartDate, 
+                Description = model.Description,
+                CreatedOn = DateTime.UtcNow, 
+                NumberOfPositions = model.NumberOfPositions, 
+                JobStatusLookUpId = 1, 
+                JobCode = Guid.NewGuid()
             };
 
             var job = await _jobRepository.AddSync(jobEntity);

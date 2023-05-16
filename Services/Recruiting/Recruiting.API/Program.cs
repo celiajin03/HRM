@@ -15,6 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IJobService , JobService>();
 builder.Services.AddScoped<IJobRepository, JobRepository>();
+builder.Services.AddScoped<ICandidateService , CandidateService>();
+builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
 
 // Inject our connectionString into DbContext
 builder.Services.AddDbContext<RecruitingDbContext>(

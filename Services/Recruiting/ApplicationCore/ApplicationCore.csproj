@@ -17,7 +17,6 @@
   <ItemGroup>
     <Folder Include="Contracts\" />
     <Folder Include="Excetpions\" />
-    <Folder Include="Contracts\Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.3.23174.2" />
