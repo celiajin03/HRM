@@ -2,10 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationCore.Models;
 
-public class JobUpdateModel
+public class CandidateUpdateModel
 {
-    public int Id { get; set; }
-    public DateTime? CloseOn { get; set; }
-    [StringLength(2048)]
-    public string? ClosedReason { get; set; }
+    [MaxLength(2048)]
+    public string? ResumeURL { get; set; }
 }

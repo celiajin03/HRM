@@ -5,10 +5,8 @@ namespace ApplicationCore.Models
 {
 	public class EmployeeRequestModel
 	{
-		public int Id { get; set; }
 		public string? Address { get; set; }
 		public string Email { get; set; }
-		public Guid EmployeeIdentityId { get; set; }
 		public int EmployeeStatusId { get; set; }
 		public DateTime? EndDate { get; set; }
 		public string FirstName { get; set; }

@@ -15,10 +15,7 @@ namespace Recruiting.API.Controllers
     [ApiController]
     public class CandidateController : ControllerBase
     {
-        // add references for ApplicationCore and Infra Projects
-        // copy all the DI registrations including DbContext into API project program.cs
-        // copy the connection string from MVC appSettings to API appSettings
-
+        
         private readonly ICandidateService _candidateService;
 
         public CandidateController(ICandidateService candidateService)
@@ -35,15 +32,12 @@ namespace Recruiting.API.Controllers
 
             if (!candidates.Any())
             {
-                // no candidates exists, then 404
-                return NotFound(new { error = "No open candidate found, please try later" });
+                return NotFound(new { error = "No candidates found, please try again later" });
             }
-            // return Json data, and also HTTP status codes
-            // serialization C# objects into Json Objects using System.Text.Json
             return Ok(candidates);
         }
         
-        // http:localhost/api/candidates/4
+        // http:localhost/api/candidates/1
         [HttpGet]
         [Route("{id:int}", Name="GetCandidateDetails")]
         public async Task<IActionResult> GetCandidateDetails(int id)
@@ -63,12 +57,23 @@ namespace Recruiting.API.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // 400 status code
                 return BadRequest();
             }
 
             var candidate = await _candidateService.AddCandidate(model);
             return CreatedAtAction("GetCandidateDetails", new { controller = "Candidate", id = candidate }, "Candidate Created");
+        }
+        
+        [HttpPut]
+        [Route("{id:int}", Name = "UpdateResume")]
+        public async Task<IActionResult> UpdateResume(int id, CandidateUpdateModel model)
+        {
+            var candidate = await _candidateService.UpdateResume(id, model);
+            if (candidate==null)
+            {
+                return BadRequest(new { error = "Failed to update resume" });
+            }
+            return Ok(new { message = "Resume updated successfully" });
         }
     }
 }

@@ -16,15 +16,24 @@ namespace Infrastructure.Repositories
 
 		public async Task<List<Candidate>> GetAllCandidates()
 		{
-			var Candidates = await _dbContext.Candidates.ToListAsync();
-			return Candidates;
+			var candidates = await _dbContext.Candidates.ToListAsync();
+			return candidates;
 		}
 
 		public async Task<Candidate> GetCandidateById(int id)
 		{
-			var Candidate = await _dbContext.Candidates.FirstOrDefaultAsync(j => j.Id == id);
-			return Candidate;
+			var candidate = await _dbContext.Candidates.FirstOrDefaultAsync(j => j.Id == id);
+			return candidate;
 		}
+		
+		public async Task<int> GetCandidateIdByEmail(string email)
+		{
+			var candidate = await _dbContext.Candidates
+				.FirstOrDefaultAsync(c => c.Email == email);
+
+			return candidate.Id;
+		}
+
 	}
 }
 

@@ -31,6 +31,15 @@ namespace Infrastructure.Repositories
 			var jobs = await _dbContext.Jobs.ToListAsync();
 			return jobs;
 		}
+		
+		public async Task<List<Job>> GetJobsByPagination(int skipCount, int pageSize)
+		{
+			return await _dbContext.Jobs
+				.OrderByDescending(j => j.Id)
+				.Skip(skipCount)
+				.Take(pageSize)
+				.ToListAsync();
+		}
 
 		public async Task<Job> GetJobById(int id)
 		{

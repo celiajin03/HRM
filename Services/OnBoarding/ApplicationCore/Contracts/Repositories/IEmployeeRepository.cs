@@ -7,7 +7,11 @@ namespace ApplicationCore.Contracts.Repositories
 	{
 		Task<List<Employee>> GetAllEmployees();
 
+		Task<List<Employee>> GetEmployeesByPagination(int skipCount, int pageSize);
+
 		Task<Employee> GetEmployeeById(int id);
+
+		Task<Employee> UpdateEmployee(Employee employee);
 	}
 }
 

@@ -13,54 +13,112 @@ namespace Interview.API.Controllers
     [ApiController]
     public class InterviewController : ControllerBase
     {
-        private readonly IInterviewService _InterviewService;
+        private readonly IInterviewService _interviewService;
 
-        public InterviewController(IInterviewService InterviewService)
+        public InterviewController(IInterviewService interviewService)
         {
-            _InterviewService = InterviewService;
+            _interviewService = interviewService;
         }
         
-        // http:localhost/api/Interviews
+        // http:localhost/api/Interview
         [Route("")]
         [HttpGet]
-        public async Task<IActionResult> GetAllInterviews()
+        public async Task<IActionResult> GetInterviewsByPagination(int page = 1, int pageSize = 10)
         {
-            var Interviews = await _InterviewService.GetAllInterviews();
+            var interviews = await _interviewService.GetInterviewsByPagination(page, pageSize);
 
-            if (!Interviews.Any())
+            if (!interviews.Any())
             {
-                // no Interviews exists, then 404
                 return NotFound(new { error = "No Interviews found, please try later" });
             }
-            return Ok(Interviews);
+            return Ok(interviews);
         }
         
-        // http:localhost/api/Interviews/1
+        // http:localhost/api/Interview/1
         [HttpGet]
         [Route("{id:int}", Name="GetInterviewDetails")]
         public async Task<IActionResult> GetInterviewDetails(int id)
         {
-            var Interview = await _InterviewService.GetInterviewById(id);
-            if (Interview == null)
+            var interview = await _interviewService.GetInterviewById(id);
+            if (interview == null)
             {
                 return NotFound(new { errorMessage = "No Interview found for this id" });
             }
-
-            return Ok(Interview);
+            return Ok(interview);
         }
 
+        // http:localhost/api/Interview
         [HttpPost]
         [Route("")]
         public async Task<IActionResult> Create(InterviewRequestModel model)
         {
             if (!ModelState.IsValid)
             {
-                // 400 status code
                 return BadRequest();
             }
 
-            var Interview = await _InterviewService.AddInterview(model);
-            return CreatedAtAction("GetInterviewDetails", new { controller = "Interview", id = Interview }, "Interview Created");
+            var interview = await _interviewService.AddInterview(model);
+            return CreatedAtRoute("GetInterviewDetails", new {id = interview.Id}, interview);
         }
+        
+        // http:localhost/api/Interview/1/reschedule
+        [HttpPut]
+        [Route("{id:int}/reschedule", Name="RescheduleInterview")]
+        public async Task<IActionResult> RescheduleInterview(int id, InterviewRescheduleModel model)
+        {
+            var updatedInterview = await _interviewService.RescheduleInterview(id, model);
+
+            if (updatedInterview == null)
+            {
+                return BadRequest(new { error = "Failed to re-schedule interview" });
+            }
+            
+            return Ok(updatedInterview);
+        }
+        
+        // http:localhost/api/Interview/1
+        [HttpDelete]
+        [Route("{id:int}", Name = "DeleteInterview")]
+        public async Task<IActionResult> DeleteInterview(int id)
+        {
+            var interview = await _interviewService.GetInterviewById(id);
+            if (interview == null)
+            {
+                return NotFound(new { error = "Interview not found" });
+            }
+            
+            var deleteId = await _interviewService.DeleteInterview(id); 
+            return Ok(new { message = "Interview deleted successfully" });
+        }
+
+        // http:localhost/api/Interview/1/feedback-rating
+        [HttpPut]
+        [Route("{id:int}/feedback-rating", Name = "GiveFeedbackRating")]
+        public async Task<IActionResult> GiveFeedbackRating(int id, InterviewFeedbackModel model)
+        {
+            var interview = await _interviewService.GiveFeedbackRating(id, model);
+            if (interview == null)
+            {
+                return BadRequest(new { error = "Failed to update feedback and rating" });
+            }
+            return Ok(interview);
+        }
+        
+        // http:localhost/api/Interview/interviewer/1
+        [HttpGet]
+        [Route("interviewer/{interviewerId:int}", Name="GetInterviewsByInterviewer")]
+        public async Task<IActionResult> GetInterviewsByInterviewer(int interviewerId, int page = 1, int pageSize = 10)
+        {
+            var interviews = await _interviewService.GetInterviewsByInterviewer(interviewerId, page, pageSize);
+
+            if (!interviews.Any())
+            {
+                return NotFound(new { error = "No interviews found for the specified interviewer" });
+            }
+
+            return Ok(interviews);
+        }
+
     }
 }
+

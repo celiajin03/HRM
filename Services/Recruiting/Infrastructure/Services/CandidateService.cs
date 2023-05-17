@@ -8,57 +8,54 @@ namespace Infrastructure.Services
 {
     public class CandidateService : ICandidateService
     {
-        private readonly ICandidateRepository _CandidateRepository;
+        private readonly ICandidateRepository _candidateRepository;
 
-        public CandidateService(ICandidateRepository CandidateRepository)
+        public CandidateService(ICandidateRepository candidateRepository)
         {
-            _CandidateRepository = CandidateRepository;
+            _candidateRepository = candidateRepository;
         }
 
         public async Task< List<CandidateResponseModel>> GetAllCandidates()
         {
-            var Candidates = await _CandidateRepository.GetAllCandidates();
-            
-            var CandidateResponseModel = new List<CandidateResponseModel>();
-            foreach (var Candidate in Candidates)
+            var candidates = await _candidateRepository.GetAllCandidates();
+            if (candidates == null) throw new ArgumentNullException(nameof(candidates));
+
+            var candidateResponseModel = new List<CandidateResponseModel>();
+            foreach (var candidate in candidates)
             {
-                CandidateResponseModel.Add(new CandidateResponseModel
+                candidateResponseModel.Add(new CandidateResponseModel
                 {
-                    Id = Candidate.Id,
-                    FirstName = Candidate.FirstName,
-                    MiddleName = Candidate.MiddleName,
-                    LastName = Candidate.LastName,
-                    Email = Candidate.Email,
-                    ResumeURL = Candidate.ResumeURL,
-                    CreatedOn = Candidate.CreatedOn
+                    Id = candidate.Id,
+                    FirstName = candidate.FirstName,
+                    MiddleName = candidate.MiddleName,
+                    LastName = candidate.LastName,
+                    Email = candidate.Email,
+                    ResumeURL = candidate.ResumeURL,
+                    CreatedOn = candidate.CreatedOn
                 });
             }
-            return CandidateResponseModel;
+            return candidateResponseModel;
         }
 
         public async Task<CandidateResponseModel> GetCandidateById(int id)
         {
-            var Candidate = await _CandidateRepository.GetCandidateById(id);
-            if (Candidate == null)
+            var candidate = await _candidateRepository.GetCandidateById(id);
+            var candidateResponseModel = new CandidateResponseModel
             {
-                return null;
-            }
-            var CandidateResponseModel = new CandidateResponseModel
-            {
-                Id = Candidate.Id,
-                FirstName = Candidate.FirstName,
-                MiddleName = Candidate.MiddleName,
-                LastName = Candidate.LastName,
-                Email = Candidate.Email,
-                ResumeURL = Candidate.ResumeURL,
-                CreatedOn = Candidate.CreatedOn,
+                Id = candidate.Id,
+                FirstName = candidate.FirstName,
+                MiddleName = candidate.MiddleName,
+                LastName = candidate.LastName,
+                Email = candidate.Email,
+                ResumeURL = candidate.ResumeURL,
+                CreatedOn = candidate.CreatedOn,
             };
-            return CandidateResponseModel;
+            return candidateResponseModel;
         }
 
-        public async Task<int> AddCandidate(CandidateRequestModel model)
+        public async Task<Candidate> AddCandidate(CandidateRequestModel model)
         {
-            var CandidateEntity = new Candidate
+            var candidateEntity = new Candidate
             {
                 Id = model.Id,
                 FirstName = model.FirstName,
@@ -69,9 +66,25 @@ namespace Infrastructure.Services
                 CreatedOn = DateTime.UtcNow,
             };
 
-            var Candidate = await _CandidateRepository.AddSync(CandidateEntity);
-            return Candidate.Id;
+            var candidate = await _candidateRepository.AddSync(candidateEntity);
+            return candidate;
         }
+
+        public async Task<int> GetCandidateIdByEmail(string email)
+        {
+            return await _candidateRepository.GetCandidateIdByEmail(email);
+        }
+        
+        public async Task<Candidate> UpdateResume(int candidateId, CandidateUpdateModel model)
+        {
+            var candidateEntity = await _candidateRepository.GetCandidateById(candidateId);
+
+            candidateEntity.ResumeURL = model.ResumeURL;
+
+            var candidate = await _candidateRepository.UpdateAsync(candidateEntity);
+            return candidate;
+        }
+
     }
 }
 

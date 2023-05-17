@@ -24,10 +24,11 @@ namespace Recruiting.API.Controllers
         {
             _jobService = jobService;
         }
-        
+
+        /*
         // http:localhost/api/jobs
-        [Route("")]
         [HttpGet]
+        [Route("")]
         public async Task<IActionResult> GetAllJobs()
         {
             var jobs = await _jobService.GetAllJobs();
@@ -41,10 +42,26 @@ namespace Recruiting.API.Controllers
             // serialization C# objects into Json Objects using System.Text.Json
             return Ok(jobs);
         }
-        
-        // http:localhost/api/jobs/4
+        */
+
+        // http:localhost/api/jobs
         [HttpGet]
-        [Route("{id:int}", Name="GetJobDetails")]
+        [Route("")]
+        public async Task<IActionResult> GetJobsByPagination(int page = 1, int pageSize = 10)
+        {
+            var jobs = await _jobService.GetJobsByPagination(page, pageSize);
+
+            if (!jobs.Any())
+            {
+                return NotFound(new { error = "No open job found, please try later" });
+            }
+
+            return Ok(jobs);
+        }
+
+        // http:localhost/api/jobs/1
+        [HttpGet]
+        [Route("{id:int}", Name = "GetJobDetails")]
         public async Task<IActionResult> GetJobDetails(int id)
         {
             var job = await _jobService.GetJobById(id);
@@ -68,6 +85,57 @@ namespace Recruiting.API.Controllers
 
             var job = await _jobService.AddJob(model);
             return CreatedAtAction("GetJobDetails", new { controller = "Jobs", id = job }, "Job Created");
+        }
+
+        // http:localhost/api/jobs/1/submissions
+        [HttpGet]
+        [Route("{id:int}/submissions", Name = "GetJobSubmissions")]
+        public async Task<IActionResult> GetJobSubmissions(int id)
+        {
+            var submissions = await _jobService.GetJobSubmissions(id);
+            if (!submissions.Any())
+            {
+                return NotFound(new { errorMessage = "No Submissions found for this job" });
+            }
+
+            return Ok(submissions);
+        }
+
+        // http:localhost/api/jobs/1
+        [HttpPost]
+        [Route("{id:int}", Name = "ApplyJob")]
+        public async Task<IActionResult> ApplyJob(int id, SubmissionRequestModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var submission = await _jobService.ApplyJob(id, model);
+            if (submission == null)
+            {
+                return BadRequest(new {message = "An existing submission already exists for this candidate"});
+            }
+            return Ok(new { message = "Job application successful",  submission});
+        }
+        
+        [HttpPut]
+        [Route("{id:int}", Name = "CloseJob")]
+        public async Task<IActionResult> CloseJob(int id, JobUpdateModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var job = await _jobService.CloseJob(id, model);
+
+            if (job == null)
+            {
+                return NotFound(new { error = "Job not found" });
+            }
+
+            return Ok(new { message = "Job closed successfully" });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using ApplicationCore.Entities;
 using ApplicationCore.Models;
 
 namespace ApplicationCore.Contracts.Services
@@ -7,10 +8,19 @@ namespace ApplicationCore.Contracts.Services
 	{
 		// List<JobResponseModel> GetAllJobs();
 		Task<List<JobResponseModel>> GetAllJobs();
+
+		Task<List<JobResponseModel>> GetJobsByPagination(int page, int pageSize);
 		
 		Task<JobResponseModel> GetJobById(int id);
 
-		Task<int> AddJob(JobRequestModel model);
+		Task<Job> AddJob(JobRequestModel model);
+		
+		Task<List<SubmissionResponseModel>> GetJobSubmissions(int jobId);
+
+		Task<Submission> ApplyJob(int jobId, SubmissionRequestModel model);
+
+		Task<Job> CloseJob(int jobId, JobUpdateModel model);
+		
 	}
 }
 

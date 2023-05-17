@@ -1,4 +1,6 @@
 ﻿using System;
+using ApplicationCore.Contracts.Repositories;
+using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
 using ApplicationCore.Models;
 using Infrastructure.Data;
@@ -6,33 +8,52 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services
 {
-	public class SubmissionService
+	public class SubmissionService: ISubmissionService
 	{
-		private RecruitingDbContext _dbContext;
+		private readonly ISubmissionRepository _submissionRepository;
 
-		public SubmissionService()
+		public SubmissionService(ISubmissionRepository submissionRepository)
 		{
+			_submissionRepository = submissionRepository;
 		}
 		
-		// public async Task<int> AddSubmission(SubmissionRequestModel model)
-		// {
-		// 	// Check if the email exists in the Candidate table
-		// 	int candidateId = _dbContext.Candidates.Where(c => c.Email == model.Email).Select(c=>c.Id).FirstOrDefault();
-		// 	bool hasExistingSubmission = _dbContext.Submissions.Any(s => s.CandidateId == candidateId);
-		//
-		// 	if (hasExistingSubmission)
-		// 	{
-		// 		// Email exists in the Candidate table
-		//
-		// 	}
-		// 	var SubmissionEntity = new Submission
-		// 	{
-		// 		FirstName = model.FirstName, LastName = model.LastName, Email=model.Email, SubmittedOn = model.SubmittedOn
-		// 	};
-		//
-		// 	// var job = await _jobRepository.AddSync(jobEntity);
-		// 	// return job.Id;
-		// }
+		public async Task< List<SubmissionResponseModel>> GetSubmissionsByJobId(int jobId)
+		{
+			// Retrieve the list of submissions for the job
+            var submissions = await _submissionRepository.GetSubmissionsByJobId(jobId);
+            
+            var submissionResponseModel = submissions.Select(submission => new SubmissionResponseModel
+            {
+                Id = submission.Id,
+                JobId = submission.JobId,
+                CandidateId = submission.CandidateId,
+                SubmittedOn = submission.SubmittedOn,
+                SelectedForInterview = submission.SelectedForInterview,
+                RejectedOn = submission.RejectedOn,
+                RejectedReason = submission.RejectedReason
+            }).ToList();
+            
+            return submissionResponseModel;
+		}
+
+		public async Task<Submission> GetSubmissionByCandidateId(int candidateId)
+		{
+			return await _submissionRepository.GetSubmissionByCandidateId(candidateId);
+		}
+		
+		public async Task<Submission> AddSubmission(int jobId, int candidateId)
+		{
+			var submissionEntity = new Submission
+			{
+				JobId = jobId,
+				CandidateId = candidateId,
+				SubmittedOn = DateTime.UtcNow,
+			};
+		
+			var submission = await _submissionRepository.AddSync(submissionEntity);
+			return submission;
+		}
+
 	}
 }
 

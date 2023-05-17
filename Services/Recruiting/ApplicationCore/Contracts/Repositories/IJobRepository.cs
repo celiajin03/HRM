@@ -7,6 +7,8 @@ namespace ApplicationCore.Contracts.Repositories
 	{
 		// List<Job> GetAllJobs();
 		Task<List<Job>> GetAllJobs();
+		
+		Task<List<Job>> GetJobsByPagination(int skipCount, int pageSize);
 
 		Task<Job> GetJobById(int id);
 	}

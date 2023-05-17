@@ -1,4 +1,5 @@
 ﻿using System;
+using ApplicationCore.Entities;
 using ApplicationCore.Models;
 
 namespace ApplicationCore.Contracts.Services
@@ -9,7 +10,11 @@ namespace ApplicationCore.Contracts.Services
 		
 		Task<CandidateResponseModel> GetCandidateById(int id);
 
-		Task<int> AddCandidate(CandidateRequestModel model);
+		Task<Candidate> AddCandidate(CandidateRequestModel model);
+
+		Task<int> GetCandidateIdByEmail(string email);
+
+		Task<Candidate> UpdateResume(int candidateId, CandidateUpdateModel model);
 	}
 }
 

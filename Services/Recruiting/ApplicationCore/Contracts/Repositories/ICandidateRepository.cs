@@ -8,6 +8,8 @@ namespace ApplicationCore.Contracts.Repositories
 		Task<List<Candidate>> GetAllCandidates();
 
 		Task<Candidate> GetCandidateById(int id);
+
+		Task<int> GetCandidateIdByEmail(string email);
 	}
 }
 

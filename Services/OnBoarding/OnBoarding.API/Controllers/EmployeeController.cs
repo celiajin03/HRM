@@ -13,26 +13,25 @@ namespace OnBoarding.API.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly IEmployeeService _EmployeeService;
+        private readonly IEmployeeService _employeeService;
 
-        public EmployeeController(IEmployeeService EmployeeService)
+        public EmployeeController(IEmployeeService employeeService)
         {
-            _EmployeeService = EmployeeService;
+            _employeeService = employeeService;
         }
         
         // http:localhost/api/Employees
         [Route("")]
         [HttpGet]
-        public async Task<IActionResult> GetAllEmployees()
+        public async Task<IActionResult> GetEmployeesByPagination(int page = 1, int pageSize = 10)
         {
-            var Employees = await _EmployeeService.GetAllEmployees();
+            var employees = await _employeeService.GetEmployeesByPagination(page, pageSize);
 
-            if (!Employees.Any())
+            if (!employees.Any())
             {
-                // no Employees exists, then 404
                 return NotFound(new { error = "No Employees found, please try later" });
             }
-            return Ok(Employees);
+            return Ok(employees);
         }
         
         // http:localhost/api/Employees/1
@@ -40,27 +39,52 @@ namespace OnBoarding.API.Controllers
         [Route("{id:int}", Name="GetEmployeeDetails")]
         public async Task<IActionResult> GetEmployeeDetails(int id)
         {
-            var Employee = await _EmployeeService.GetEmployeeById(id);
-            if (Employee == null)
+            var employee = await _employeeService.GetEmployeeById(id);
+            if (employee == null)
             {
                 return NotFound(new { errorMessage = "No Employee found for this id" });
             }
-
-            return Ok(Employee);
+            return Ok(employee);
         }
-
+        
+        // http:localhost/api/Employees
         [HttpPost]
-        [Route("")]
+        [Route("", Name = "AddEmployee")]
         public async Task<IActionResult> Create(EmployeeRequestModel model)
         {
             if (!ModelState.IsValid)
             {
-                // 400 status code
                 return BadRequest();
             }
+            
+            var employee = await _employeeService.AddEmployee(model); 
+            return CreatedAtRoute("GetEmployeeDetails", new { id = employee.Id }, employee);
+        }
+        
+        // http:localhost/api/Employees/1
+        [HttpPut]
+        [Route("{id:int}", Name = "UpdateEmployee")]
+        public async Task<IActionResult> UpdateEmployee(int id, EmployeeUpdateModel model)
+        {
+            var employee = await _employeeService.UpdateEmployee(id, model);
+            if (employee == null)
+            {
+                return NotFound(new { error = "Employee not found" });
+            }
+            return Ok(employee);
+        }
 
-            var Employee = await _EmployeeService.AddEmployee(model);
-            return CreatedAtAction("GetEmployeeDetails", new { controller = "Employee", id = Employee }, "Employee Created");
+        // http:localhost/api/Employees/1/terminate
+        [HttpPut]
+        [Route("{id:int}/terminate")]
+        public async Task<IActionResult> TerminateEmployee(int id)
+        {
+            var employee = await _employeeService.TerminateEmployee(id);
+            if (employee == null)
+            {
+                return NotFound(new { error = "Employee not found" });
+            }
+            return Ok(employee);
         }
     }
 }
