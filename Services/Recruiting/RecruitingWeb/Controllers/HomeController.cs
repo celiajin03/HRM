@@ -28,12 +28,14 @@ public class HomeController : Controller
     {
         return View();
     }
-
+    
+    /*
     public IActionResult Jobs()
     {
         //InvalidOperationException: The view 'Jobs' was not found.
         return View();
     }
+    */
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

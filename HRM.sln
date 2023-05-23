@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnBoarding.API", "Services\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interviews.API", "Services\Interviews\Interviews.API\Interviews.API.csproj", "{1EF7FC2C-6188-467C-B058-AB9D6CAE5899}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.API", "Services\Authentication\Authentication.API\Authentication.API.csproj", "{E079ECE4-DBA7-42CA-97E9-B253E66D6561}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{1EF7FC2C-6188-467C-B058-AB9D6CAE5899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EF7FC2C-6188-467C-B058-AB9D6CAE5899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EF7FC2C-6188-467C-B058-AB9D6CAE5899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E079ECE4-DBA7-42CA-97E9-B253E66D6561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E079ECE4-DBA7-42CA-97E9-B253E66D6561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E079ECE4-DBA7-42CA-97E9-B253E66D6561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E079ECE4-DBA7-42CA-97E9-B253E66D6561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,5 +101,6 @@ Global
 		{F7333B6C-45F6-41A3-A9A5-FB0036BC4DD5} = {EE25B03D-7470-4065-BC09-FE089648F47D}
 		{12049852-4E02-451B-B80B-09884FC610D7} = {F7FB8F4D-2B6C-4EF1-827D-5A8A44C07659}
 		{1EF7FC2C-6188-467C-B058-AB9D6CAE5899} = {EE25B03D-7470-4065-BC09-FE089648F47D}
+		{E079ECE4-DBA7-42CA-97E9-B253E66D6561} = {431C9A21-777C-4348-BF73-03C8B1D6A516}
 	EndGlobalSection
 EndGlobal

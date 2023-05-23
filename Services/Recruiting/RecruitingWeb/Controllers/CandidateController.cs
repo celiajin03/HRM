@@ -13,7 +13,8 @@ namespace RecruitingWeb.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            // return View();
+            throw new NotImplementedException();
         }
     }
 }
