@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationCore.Entities;
 
+// Hired, Terminated, Pending (from candidate to employee)
 public class EmployeeStatusLookUp
 {
     public int Id { get; set; }
