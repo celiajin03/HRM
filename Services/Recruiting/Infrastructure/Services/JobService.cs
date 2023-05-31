@@ -79,6 +79,25 @@ namespace Infrastructure.Services
             return jobResponseModels;
         }
 
+        public async Task<List<JobResponseModel>> GetJobsByTittleOrDescription(string keyword)
+        {
+            var jobs = await _jobRepository.GetJobsByTittleOrDescription(keyword);;
+            
+            var jobResponseModels = jobs.Select(job => new JobResponseModel
+            {
+                Id = job.Id, 
+                Description = job.Description, 
+                Title = job.Title, 
+                StartDate = job.StartDate.GetValueOrDefault(), 
+                NumberOfPositions = job.NumberOfPositions, 
+                JobCode = job.JobCode,
+                IsActive = job.IsActive,
+                CreatedOn = job.CreatedOn
+            }).ToList();
+
+            return jobResponseModels;
+        }
+
         public async Task<JobResponseModel> GetJobById(int id)
         {
             // return  new JobResponseModel { Id = 4, Title = "JavaScript Developer", Description = "Need to be good with JavaScript" };

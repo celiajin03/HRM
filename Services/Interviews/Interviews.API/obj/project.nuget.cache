@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KOfoJsCs5NSz77/0GriAlVqmtpLRDxNaSXfEb7bJUyIskUHnPba/A892uRMQ0ZAH6GfPi8hUbxB0R9v2qgJ8aw==",
+  "dgSpecHash": "tUduGQQBmDyh7zq8pO43rNhUXeArLHH2PZwdYSD8zxtynMPdl0YoxW8Rl10cp2rp167y9B3AtEJrKKGXbZNhzA==",
   "success": true,
   "projectFilePath": "/Users/celia/Desktop/Antra/Net/HRM/Services/Interviews/Interviews.API/Interviews.API.csproj",
   "expectedPackageFiles": [
@@ -77,7 +77,7 @@
     "/Users/celia/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/Users/celia/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/celia/.nuget/packages/netstandard.library/1.6.1/netstandard.library.1.6.1.nupkg.sha512",
-    "/Users/celia/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/celia/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/celia/.nuget/packages/nuget.common/6.3.1/nuget.common.6.3.1.nupkg.sha512",
     "/Users/celia/.nuget/packages/nuget.configuration/6.3.1/nuget.configuration.6.3.1.nupkg.sha512",
     "/Users/celia/.nuget/packages/nuget.dependencyresolver.core/6.3.1/nuget.dependencyresolver.core.6.3.1.nupkg.sha512",

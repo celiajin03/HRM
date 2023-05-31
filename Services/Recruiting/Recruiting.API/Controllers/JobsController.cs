@@ -59,6 +59,20 @@ namespace Recruiting.API.Controllers
             return Ok(jobs);
         }
 
+        [HttpGet]
+        [Route("search")]
+        public async Task<IActionResult> SearchJobs(string keyword)
+        {
+            var jobs = await _jobService.GetJobsByTittleOrDescription(keyword);
+
+            if (!jobs.Any())
+            {
+                return NotFound(new { error = "No relevant jobs found, try another keyword" });
+            }
+
+            return Ok(jobs);
+        }
+
         // http:localhost/api/jobs/1
         [HttpGet]
         [Route("{id:int}", Name = "GetJobDetails")]
