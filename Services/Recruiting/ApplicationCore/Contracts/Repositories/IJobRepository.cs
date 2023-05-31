@@ -10,8 +10,6 @@ namespace ApplicationCore.Contracts.Repositories
 		
 		Task<List<Job>> GetJobsByPagination(int skipCount, int pageSize);
 
-		Task<List<Job>> GetJobsByTittleOrDescription(string keyword);
-
 		Task<Job> GetJobById(int id);
 	}
 }

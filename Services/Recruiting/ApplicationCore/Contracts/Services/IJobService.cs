@@ -10,8 +10,6 @@ namespace ApplicationCore.Contracts.Services
 		Task<List<JobResponseModel>> GetAllJobs();
 
 		Task<List<JobResponseModel>> GetJobsByPagination(int page, int pageSize);
-
-		Task<List<JobResponseModel>> GetJobsByTittleOrDescription(string keyword);
 		
 		Task<JobResponseModel> GetJobById(int id);
 

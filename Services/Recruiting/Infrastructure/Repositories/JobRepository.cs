@@ -41,13 +41,6 @@ namespace Infrastructure.Repositories
 				.ToListAsync();
 		}
 
-		public async Task<List<Job>> GetJobsByTittleOrDescription(string keyword)
-		{
-			return await _dbContext.Jobs
-				.Where(j => j.Title.Contains(keyword) || j.Description.Contains(keyword))
-				.ToListAsync();
-		}
-
 		public async Task<Job> GetJobById(int id)
 		{
 			var job = await _dbContext.Jobs.FirstOrDefaultAsync(j => j.Id == id);

@@ -130,16 +130,16 @@ namespace Interview.API.Controllers
             // if role = manger, get only manager's interviews
             // read the header using HttpContext
             // JWT token
-            // Authorization Header, bearer akdflgncvbopnzeaargbebvnvirgasdm
+            // Authorization Header, bearer akdfl;gncvbopnzeaa;rgbebvnv;irga;sdm
             // userid, roles
             // decode the JWT to C# object
-            // /*
+            /*
             // Equivalent to [Authorize]:
             if (this.HttpContext.User.Identity.IsAuthenticated)
             {
                 // go to database, and get the values
             }
-            // */
+            */
             var interviews = new List<string>(new[] { "abc, xyz, dddd" });
         
             return Ok(interviews);
