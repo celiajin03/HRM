@@ -31,6 +31,8 @@ public class OnBoardingDbContext:DbContext
         var EmployeeStatusLookUpsJsonData = File.ReadAllText(LocationOfEmployeeStatusLookUpsJsonData);
         IList<EmployeeStatusLookUp> EmployeeStatusLookUps = JsonConvert.DeserializeObject<IList<EmployeeStatusLookUp>>(EmployeeStatusLookUpsJsonData);
         modelBuilder.Entity<EmployeeStatusLookUp>().HasData(EmployeeStatusLookUps);
+        
+        base.OnModelCreating(modelBuilder);
     }
 
     private void ConfigureEmployees(EntityTypeBuilder<Employee> builder)

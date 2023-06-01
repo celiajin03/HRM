@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SGS6zqnCR1zj8XAjJOliCBOx7PffPFEmLlziDc5ZBBSsex+R8TJLhTx2H5FZGag+VmZovVzCnQMRMKMOCzmF9g==",
+  "dgSpecHash": "KtmOktEE0/Tfl4GuuxSfkT5arRgg1J6SykF5Era/f5VS2nkyXXplCjRGlxrxCQLiHndVHWzcae9TkWTCP9tR7g==",
   "success": true,
   "projectFilePath": "/Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/RecruitingWeb/RecruitingWeb.csproj",
   "expectedPackageFiles": [
@@ -43,7 +43,7 @@
     "/Users/celia/.nuget/packages/microsoft.entityframeworkcore.sqlite/6.0.16/microsoft.entityframeworkcore.sqlite.6.0.16.nupkg.sha512",
     "/Users/celia/.nuget/packages/microsoft.entityframeworkcore.sqlite.core/6.0.16/microsoft.entityframeworkcore.sqlite.core.6.0.16.nupkg.sha512",
     "/Users/celia/.nuget/packages/microsoft.entityframeworkcore.sqlserver/8.0.0-preview.3.23174.2/microsoft.entityframeworkcore.sqlserver.8.0.0-preview.3.23174.2.nupkg.sha512",
-    "/Users/celia/.nuget/packages/microsoft.entityframeworkcore.tools/6.0.16/microsoft.entityframeworkcore.tools.6.0.16.nupkg.sha512",
+    "/Users/celia/.nuget/packages/microsoft.entityframeworkcore.tools/7.0.5/microsoft.entityframeworkcore.tools.7.0.5.nupkg.sha512",
     "/Users/celia/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0-preview.3.23174.8/microsoft.extensions.caching.abstractions.8.0.0-preview.3.23174.8.nupkg.sha512",
     "/Users/celia/.nuget/packages/microsoft.extensions.caching.memory/8.0.0-preview.3.23174.8/microsoft.extensions.caching.memory.8.0.0-preview.3.23174.8.nupkg.sha512",
     "/Users/celia/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0-preview.3.23174.8/microsoft.extensions.configuration.abstractions.8.0.0-preview.3.23174.8.nupkg.sha512",

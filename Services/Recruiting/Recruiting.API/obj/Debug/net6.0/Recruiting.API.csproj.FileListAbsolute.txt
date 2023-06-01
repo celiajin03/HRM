@@ -89,3 +89,4 @@
 /Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Recruiting.API/bin/Debug/net6.0/System.Text.Encodings.Web.dll
 /Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Recruiting.API/bin/Debug/net6.0/System.Text.Json.dll
 /Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Recruiting.API/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+/Users/celia/Desktop/Antra/Net/HRM/Services/Recruiting/Recruiting.API/bin/Debug/net6.0/Newtonsoft.Json.dll
