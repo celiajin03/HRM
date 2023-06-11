@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(RecruitingDbContext))]
-    [Migration("20230601181928_AddRecruitingMockData")]
+    [Migration("20230611232938_AddRecruitingMockData")]
     partial class AddRecruitingMockData
     {
         /// <inheritdoc />
