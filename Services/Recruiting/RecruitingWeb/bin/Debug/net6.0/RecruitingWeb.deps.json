@@ -13,7 +13,7 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.0-preview.3.23174.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.3.23174.2",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.16",
-          "Microsoft.EntityFrameworkCore.Tools": "6.0.16",
+          "Microsoft.EntityFrameworkCore.Tools": "7.0.5",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.13"
         },
         "runtime": {
@@ -1006,7 +1006,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/6.0.16": {
+      "Microsoft.EntityFrameworkCore.Tools/7.0.5": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "8.0.0-preview.3.23174.2"
         }
@@ -2615,7 +2615,8 @@
       "Infrastructure/1.0.0": {
         "dependencies": {
           "ApplicationCore": "1.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.3.23174.2"
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.3.23174.2",
+          "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "Infrastructure.dll": {}
@@ -2902,12 +2903,12 @@
       "path": "microsoft.entityframeworkcore.sqlserver/8.0.0-preview.3.23174.2",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.8.0.0-preview.3.23174.2.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Tools/6.0.16": {
+    "Microsoft.EntityFrameworkCore.Tools/7.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0SGLgmBdpC8BdjlMAsnsxJUiF5+Qj9NuEE+ysA+Oau/3X1HZGpLqbIYlFPGoboBdi8uqO9CTO2KbEmVxS72Deg==",
-      "path": "microsoft.entityframeworkcore.tools/6.0.16",
-      "hashPath": "microsoft.entityframeworkcore.tools.6.0.16.nupkg.sha512"
+      "sha512": "sha512-OV/PUGBVSbQVd2daTeXoMBoao2qtfBgT2TuaYo48xRYUS2gH++f8OFiZc6zwASqkMKgs1/t5uVlxgKl18m/1Fw==",
+      "path": "microsoft.entityframeworkcore.tools/7.0.5",
+      "hashPath": "microsoft.entityframeworkcore.tools.7.0.5.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/8.0.0-preview.3.23174.8": {
       "type": "package",
