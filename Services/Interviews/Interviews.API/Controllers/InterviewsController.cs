@@ -120,31 +120,48 @@ namespace Interview.API.Controllers
             return Ok(interviews);
         }
         
+        // [HttpGet]
+        // [Route("")]
+        // // [Authorize]
+        // public IActionResult GetAllInterviews()
+        // {
+        //     // go to database and get all the interviews based on role
+        //     // if role = admin, get all
+        //     // if role = manger, get only manager's interviews
+        //     // read the header using HttpContext
+        //     // JWT token
+        //     // Authorization Header, bearer akdfl;gncvbopnzeaa;rgbebvnv;irga;sdm
+        //     // userid, roles
+        //     // decode the JWT to C# object
+        //     
+        //     // Equivalent to [Authorize]:
+        //     if (this.HttpContext.User.Identity.IsAuthenticated)
+        //     {
+        //         // go to database, and get the values
+        //     }
+        //     
+        //     var interviews = new List<string>(new[] { "abc, xyz, dddd" });
+        //
+        //     return Ok(interviews);
+        // }
+        
+        
         [HttpGet]
         [Route("")]
         // [Authorize]
         public IActionResult GetAllInterviews()
         {
-            // go to database and get all the interviews based on role
-            // if role = admin, get all
-            // if role = manger, get only manager's interviews
-            // read the header using HttpContext
-            // JWT token
-            // Authorization Header, bearer akdfl;gncvbopnzeaa;rgbebvnv;irga;sdm
-            // userid, roles
-            // decode the JWT to C# object
-            /*
             // Equivalent to [Authorize]:
             if (this.HttpContext.User.Identity.IsAuthenticated)
             {
-                // go to database, and get the values
-            }
-            */
-            var interviews = new List<string>(new[] { "abc, xyz, dddd" });
+                var interviews = new List<string>(new[] { "abc, xyz, dddd" });
         
-            return Ok(interviews);
-        }
+                return Ok(interviews);
+            }
+            
+            return NotFound();
 
+        }
     }
 }
 

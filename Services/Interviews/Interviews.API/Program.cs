@@ -25,7 +25,7 @@ builder.Services.AddDbContext<InterviewsDbContext>(
 );
 
 // Microsoft.AspNetCore.Authentication.JwtBearer
-// Microsoft.IdentityModel.JsonWebTokens
+// Microsoft.IdentityModel.Tokens
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -50,7 +50,7 @@ var app = builder.Build();
 // }
 
 app.UseHttpsRedirection();
-// app.UseAuthentication();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
