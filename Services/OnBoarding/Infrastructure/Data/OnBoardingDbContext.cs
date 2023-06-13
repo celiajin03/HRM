@@ -20,17 +20,17 @@ public class OnBoardingDbContext:DbContext
         modelBuilder.Entity<Employee>(ConfigureEmployees);
         modelBuilder.Entity<EmployeeStatusLookUp>(ConfigureEmployeeStatusLookUps);
         
-        // Employees Mock Data
-        string LocationOfEmployeesJsonData = "../Infrastructure/Data/EmployeesMockData.json";
-        var EmployeesJsonData = File.ReadAllText(LocationOfEmployeesJsonData);
-        IList<Employee> Employees = JsonConvert.DeserializeObject<IList<Employee>>(EmployeesJsonData);
-        modelBuilder.Entity<Employee>().HasData(Employees);
-        
-        // EmployeeStatusLookUps Mock Data
-        string LocationOfEmployeeStatusLookUpsJsonData = "../Infrastructure/Data/EmployeeStatusLookUpsMockData.json";
-        var EmployeeStatusLookUpsJsonData = File.ReadAllText(LocationOfEmployeeStatusLookUpsJsonData);
-        IList<EmployeeStatusLookUp> EmployeeStatusLookUps = JsonConvert.DeserializeObject<IList<EmployeeStatusLookUp>>(EmployeeStatusLookUpsJsonData);
-        modelBuilder.Entity<EmployeeStatusLookUp>().HasData(EmployeeStatusLookUps);
+        // // Employees Mock Data
+        // string LocationOfEmployeesJsonData = "../Infrastructure/Data/EmployeesMockData.json";
+        // var EmployeesJsonData = File.ReadAllText(LocationOfEmployeesJsonData);
+        // IList<Employee> Employees = JsonConvert.DeserializeObject<IList<Employee>>(EmployeesJsonData);
+        // modelBuilder.Entity<Employee>().HasData(Employees);
+        //
+        // // EmployeeStatusLookUps Mock Data
+        // string LocationOfEmployeeStatusLookUpsJsonData = "../Infrastructure/Data/EmployeeStatusLookUpsMockData.json";
+        // var EmployeeStatusLookUpsJsonData = File.ReadAllText(LocationOfEmployeeStatusLookUpsJsonData);
+        // IList<EmployeeStatusLookUp> EmployeeStatusLookUps = JsonConvert.DeserializeObject<IList<EmployeeStatusLookUp>>(EmployeeStatusLookUpsJsonData);
+        // modelBuilder.Entity<EmployeeStatusLookUp>().HasData(EmployeeStatusLookUps);
         
         base.OnModelCreating(modelBuilder);
     }
