@@ -113,5 +113,16 @@ namespace Authentication.API.Controllers
         }
         
         // GetUserById
+        [HttpGet]
+        [Route("{id:int}", Name="GetUserDetails")]
+        public async Task<IActionResult> GetUserDetails(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound(new { errorMessage = "No User found for this id" });
+            }
+            return Ok(user);
+        }
     }
 }
