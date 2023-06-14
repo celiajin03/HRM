@@ -49,20 +49,32 @@ namespace Authentication.API.Controllers
             
             // save the user info to user table
             var result = await _userManager.CreateAsync(user, model.Password);
-            if (!result.Errors.Any())
+            if (result.Succeeded)  // (!result.Errors.Any())
             {
                 // user has been successfully created
-                return CreatedAtRoute("GetUser", new { controller = "account", id = user.Id });
+                return CreatedAtRoute("GetUser", new { id = user.Id }, user);
             }
             
             // return bad request
             return BadRequest(result.Errors.Select(error => error.Description).ToList());
-
+        }
+        
+        // GetUserById
+        [HttpGet]
+        [Route("{id}", Name="GetUser")]
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound(new { errorMessage = "No User found for this id" });
+            }
+            return Ok(user);
         }
 
         
         // Login
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (!ModelState.IsValid)
@@ -110,19 +122,6 @@ namespace Authentication.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-        }
-        
-        // GetUserById
-        [HttpGet]
-        [Route("{id:int}", Name="GetUserDetails")]
-        public async Task<IActionResult> GetUserDetails(string id)
-        {
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound(new { errorMessage = "No User found for this id" });
-            }
-            return Ok(user);
         }
     }
 }
