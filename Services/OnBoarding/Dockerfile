@@ -19,4 +19,5 @@ RUN dotnet publish "OnBoarding.API.csproj" -c Release -o /app/publish /p:UseAppH
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV angularURL = 'http://localhost:4200'
 ENTRYPOINT ["dotnet", "OnBoarding.API.dll"]
